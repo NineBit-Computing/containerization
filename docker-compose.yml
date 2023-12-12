@@ -1,0 +1,38 @@
+---
+version: '3.8'
+
+networks: 
+    dc_mynet_for_mongo: 
+      driver: bridge
+
+services:
+ webserver:
+  # container_name: dc_web_server
+  build:
+   context: .
+  ports:
+   - 8090:9001
+  networks:
+   - dc_mynet_for_mongo
+  environment:
+   - WEB_SERVER_PORT=9001
+   - MONGO_NETWORK_HOST=mongo
+  # volumes:
+  #  - ./:/app
+  #  - /app/node_modules
+  # With volumes, mapping our local source code into the running container so that we can make changes in our text editor and have those changes picked up in the container
+  # command: npm run start
+
+ mongo:
+  image: mongo:latest
+  ports:
+   - 27017:27017
+  networks:
+   - dc_mynet_for_mongo
+  volumes:
+   - dc_mongodb:/data/db
+   - dc_mongodb_config:/data/configdb
+
+volumes:
+ dc_mongodb:
+ dc_mongodb_config:

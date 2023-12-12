@@ -1,0 +1,26 @@
+{
+  "name": "node_docker",
+  "version": "1.0.0",
+  "description": "sample project to test node image ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha ./**/*.js"
+  },
+  "keywords": [
+    "docker",
+    "node"
+  ],
+  "author": "Rajeev",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "mongo": "^0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0"
+  }
+}
