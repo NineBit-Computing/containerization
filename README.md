@@ -11,15 +11,15 @@ Bring up the webserver container by running the webserver_image
 ```bash
 docker run \
   -it -d \
-  -p 8090:9001 \
+  -p 80:9001 \
   -e WEB_SERVER_PORT=9001 \
   --name rest-server \
   webserver_image:v1
 ```
 
-The static web page should be accessible here http://localhost:8090
+The static web page should be accessible here http://localhost:80
 
-But the route that depends on database will fail http://localhost:8090/askdb/james-bond
+But the route that depends on database will fail http://localhost:80/askdb/james-bond
 
 <br/>
 
@@ -57,7 +57,7 @@ Run the node server again with network information
 ```bash
 docker run \
   -it -d \
-  -p 8090:9001 \
+  -p 80:9001 \
 	-e MONGO_NETWORK_HOST=mynet \
   -e WEB_SERVER_PORT=9001 \
   --network mynet\
@@ -65,7 +65,7 @@ docker run \
   webserver_image:v1
 ```
 
-Access the route that depends on database http://localhost:8090/askdb/james-bond
+Access the route that depends on database http://localhost:80/askdb/james-bond
 
 <br/>
 
